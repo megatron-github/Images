@@ -2,12 +2,6 @@
  *****************************************************************************
    FILE:        images.py
 
-   AUTHOR:      Truong Pham
-
-   ASSIGNMENT:  Project 6: Images
-
-   DATE:        10/17/2018
-
    DESCRIPTION: Given an picture, write a program to create new picture from 
                 the given picture that has features such as blurring picture, 
                 picture in inverse color, or picture with color in white, gray, 
@@ -49,12 +43,10 @@ def is_in_bounds(picture, possible_row, possible_col):
     """ Return True for each coordinates within the picture.
         Return False otherwise. """
     
-    # Cite: Denzel Capella, Lucas Steele (Rigatoni)(Barusek) and Man Nguyen
-    # Description: Denzel and Lucas state that if (row_loc, col_loc) are
-    # smaller than zero or bigger than grid_size, then (row_loc, col_loc)
-    # is outside of grid. Man states len(grid[0]) will find the number of
-    # column of the first row, which is also the number of column of the
-    # whole grid.
+    # If (row_loc, col_loc) are smaller than zero or bigger than grid_size, 
+    # then (row_loc, col_loc) is outside of grid. Man states len(grid[0]) 
+    # will find the number of column of the first row, which is also the 
+    # number of column of the whole grid.
     if possible_row < 0 or possible_row >= len(picture):
         return False
     if possible_col < 0 or possible_col >= len(picture[0]):
@@ -135,15 +127,14 @@ def grayscale(picture):
         gray_list = []
         for j in range(len(picture[i])):
 
-            # Cite: Lucas Barusek
-            # Desc: The average of intensity of the RGB values
+            # The average of intensity of the RGB values
             # can be found by adding all the values in the 
             # triples and divide by three
             gray_pixel = (picture[i][j][0] 
                           + picture[i][j][1] 
                           + picture[i][j][2]) // 3
-            # Cite: Lucas Barusek
-            # Desc: The gray pixels are tuples of triple
+
+            # The gray pixels are tuples of triple
             # the average values
             gray_list.append((gray_pixel, 
                               gray_pixel, 
@@ -155,9 +146,6 @@ def draw_image(yertle, picture):
     """ With a turtle face east, for every pixel on the image, 
         draw a dot that the upper left corner of the drawn image 
         is where the turtle started. """
-
-    # Cite: Lucas Barusek
-    # Desc: How to move actually move dot forward for ever row
 
     # For each row of pixels, draw a dot and move forward. 
     for y in range(len(picture)):
@@ -198,9 +186,8 @@ def ppm_data_to_image(lines):
                            int(lines[2]))
                 triples_list.append(triples)
 
-            # Cite: Lucas Barusek
-            # Desc: The idea of slicing off the last triple
-            # in lines to make it easier to append later triples
+            # Slicing off the last triple in lines to make it 
+            # easier to append later triples
             lines = lines[3:]
         image.append(triples_list)
     return image
@@ -219,10 +206,6 @@ def read_file_lines(filename):
     for i in range(len(lines)):
         lines[i] = lines[i][:-1]
     return lines
-
-#------------------------------------------------------------------------
-# Main function
-#------------------------------------------------------------------------
 
 def main(): 
     """ This is the main function. """
@@ -245,7 +228,7 @@ def main():
     # Apply one or more manipulations, if desired:
     # picture = negative(picture)
     # picture = grayscale(picture)
-    #for _ in range(60):  # really blurry!
+    # for _ in range(60):  # really blurry!
     #    picture = blur(picture)
 
     # Draw it!
